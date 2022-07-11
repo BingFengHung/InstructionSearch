@@ -1,18 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace InstructionSearch
 {
+    class Group
+    {
+        public string Name { get; set; }
+    }
+
     class MainViewModel : ViewModelBase
     {
         public MainViewModel()
         {
-
+            var groups = InstructionUtility.Groups(InstructionUtility.BasePath);
+            foreach (var group in groups)
+            {
+                var groupName = InstructionUtility.GetGroupName(group);
+                Groups.Add(new Group
+                {
+                    Name = groupName
+                });
+            }
         }
 
-        public ICommand AddGroupCommand
-        AddInstructionCommand
+        public ObservableCollection<Group> Groups { get; set; } = new ObservableCollection<Group>();
+
+        public ICommand AddGroupCommand => new RelayCommand((i) =>
+        {
+
+        });
+
+        public ICommand AddInstructionCommand => new RelayCommand((i) =>
+        {
+
+        });
     }
 }

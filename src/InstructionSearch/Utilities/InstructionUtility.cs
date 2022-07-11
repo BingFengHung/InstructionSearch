@@ -6,15 +6,37 @@ namespace InstructionSearch
 {
     class InstructionUtility
     {
-        static string path = @".\InstructionSet";
+        public static string BasePath = @".\InstructionSet";
 
         static InstructionUtility()
         {
-            if (Directory.Exists(path)) return;
-            Directory.CreateDirectory(path);
+            if (Directory.Exists(BasePath)) return;
+            Directory.CreateDirectory(BasePath);
         }
 
-        public static void CreateGroup(string groupName)
+        public static List<string> Groups(string path)
+        {
+            return Directory.GetDirectories(path).ToList();
+        }
+
+        public static string GetGroupName(string path)
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(path);
+            return directoryInfo.Name;
+        }
+
+        public static string GetInstructionName(string path)
+        {
+            FileInfo fileInfo = new FileInfo(path);
+            return fileInfo.Name;
+        }
+
+        public static List<string> Instructions(string path)
+        {
+            return Directory.GetFiles(path).ToList();
+        }
+
+        public static void CreateGroup(string path, string groupName)
         {
             string group = Path.Combine(path, groupName);
 

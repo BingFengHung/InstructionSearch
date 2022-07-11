@@ -5,13 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InstructionSearch"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        SizeToContent="WidthAndHeight"
+        Width="450"
+        Title="MainWindow">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
 
     <StackPanel Orientation="Vertical">
-        <Button Content="新增群組" Click="{Binding AddGroupCommand}"/>
-        <Button Content="新增指令" Click="{Binding AddInstructionCommand}"/>
+        <ItemsControl ItemsSource="{Binding Groups}"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      Height="300">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button>
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border>
+                                    <ContentPresenter Content="{TemplateBinding Content}"
+                                                      HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="新增群組" Command="{Binding AddGroupCommand}"/>
+            <Button Content="新增指令" Command="{Binding AddInstructionCommand}"/>
+        </StackPanel>
     </StackPanel>
 </Window>

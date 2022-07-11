@@ -1,0 +1,24 @@
+﻿<Window x:Class="InstructionSearch.AddInstructionGroupView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InstructionSearch"
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight"
+        Title="AddInstructionGroupView">
+    <StackPanel Orientation="Vertical"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock  Text="指令集名稱：" Margin="5, o"/>
+            <TextBox Width="100"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Margin="0, 5">
+            <Button Content="確定"/>
+            <Button Content="取消"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
