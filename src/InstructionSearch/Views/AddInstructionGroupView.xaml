@@ -7,18 +7,26 @@
         mc:Ignorable="d"
         SizeToContent="WidthAndHeight"
         Title="AddInstructionGroupView">
+    <Window.DataContext>
+        <local:AddInstructionGroupViewModel/>
+    </Window.DataContext>
+
     <StackPanel Orientation="Vertical"
-                HorizontalAlignment="Center" VerticalAlignment="Center">
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Margin="5">
         <StackPanel Orientation="Horizontal">
-            <TextBlock  Text="指令集名稱：" Margin="5, o"/>
-            <TextBox Width="100"/>
+            <TextBlock  Text="指令集名稱：" Margin="5, 0"/>
+            <TextBox Width="100"
+                     Text="{Binding GroupName, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center" VerticalAlignment="Center"
                     Margin="0, 5">
-            <Button Content="確定"/>
-            <Button Content="取消"/>
+            <Button Content="確定"
+                    Command="{Binding ConfirmCommand}"/>
+            <Button Content="取消"
+                    Command="{Binding CancelCommand}"/>
         </StackPanel>
     </StackPanel>
 </Window>

@@ -27,7 +27,14 @@ namespace InstructionSearch
 
         public ICommand AddGroupCommand => new RelayCommand((i) =>
         {
-
+            AddInstructionGroupView addGroupView = new AddInstructionGroupView();
+            if (addGroupView.DialogResult == true)
+            {
+                Groups.Add(new Group
+                {
+                    Name = ((IDialogResult)addGroupView).Result
+                });
+            }
         });
 
         public ICommand AddInstructionCommand => new RelayCommand((i) =>
