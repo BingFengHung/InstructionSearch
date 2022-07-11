@@ -11,5 +11,8 @@ namespace InstructionSearch
         {
 
         }
+
+        public ICommand AddGroupCommand
+        AddInstructionCommand
     }
 }
