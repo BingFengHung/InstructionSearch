@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:InstructionSearch"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+
+    <StackPanel Orientation="Vertical">
+        <Button Content="新增群組" Click="{Binding AddGroupCommand}"/>
+        <Button Content="新增指令" Click="{Binding AddInstructionCommand}"/>
+    </StackPanel>
 </Window>

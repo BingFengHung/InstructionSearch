@@ -5,7 +5,11 @@ using System.Text;
 
 namespace InstructionSearch
 {
-    class MainViewModel
+    class MainViewModel : ViewModelBase
     {
+        public MainViewModel()
+        {
+
+        }
     }
 }
