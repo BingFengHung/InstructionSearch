@@ -23,13 +23,22 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding Name}">
+                    <Button Content="{Binding Name}"
+                            Command="{Binding DataContext.ItemClickCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}, Mode=FindAncestor}}">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border>
+                                <Border x:Name="border" Padding="5" BorderThickness="1"
+                                        BorderBrush="Black"
+                                        CornerRadius="5"
+                                        Background="Transparent">
                                     <ContentPresenter Content="{TemplateBinding Content}"
                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#330000FF"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>

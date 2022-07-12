@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System.Linq;
 
 namespace InstructionSearch
 {
@@ -13,7 +14,9 @@ namespace InstructionSearch
                 var groupName = InstructionUtility.GetGroupName(group);
                 Groups.Add(new Group
                 {
-                    Name = groupName
+                    Name = groupName,
+                    FullPath = group,
+                    Type = ItemType.Directory
                 });
             }
         }
@@ -25,16 +28,27 @@ namespace InstructionSearch
             AddInstructionGroupView addGroupView = new AddInstructionGroupView();
             if (addGroupView.ShowDialog() == true)
             {
+                var result = ((IDialogResult)addGroupView).Result;
+                if (Groups.Any(group => group.Name.Contains(result) || result == string.Empty)) return;
+
                 Groups.Add(new Group
                 {
-                    Name = ((IDialogResult)addGroupView).Result
+                    Name = result,
+                    FullPath = InstructionUtility.GetCurrentPath()
                 });
             }
         });
 
         public ICommand AddInstructionCommand => new RelayCommand((i) =>
         {
+            if (InstructionUtility.GetCurrentPath() == InstructionUtility.BasePath) return;
 
+
+        });
+
+        public ICommand ItemClickCommand => new RelayCommand(i =>
+        {
+            var model = i as Group;
         });
     }
 }
