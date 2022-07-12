@@ -9,6 +9,16 @@ namespace InstructionSearch
         public static string BasePath = @".\InstructionSet";
         private static Stack<string> PathStack;
 
+        public static void PushPath(string path)
+        {
+            PathStack.Push(path);
+        }
+
+        public static void PopPath()
+        {
+            PathStack.Pop();
+        }
+
         static InstructionUtility()
         {
             PathStack = new Stack<string>();
@@ -25,7 +35,8 @@ namespace InstructionSearch
 
         public static List<string> Groups(string path)
         {
-            return Directory.GetDirectories(path).ToList();
+            return Directory.GetFileSystemEntries(path).ToList();
+            // return Directory.GetDirectories(path).ToList();
         }
 
         public static ItemType GetItemType(string path)

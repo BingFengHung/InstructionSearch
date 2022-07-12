@@ -62,6 +62,7 @@
     <Compile Include="AttachedProperties\FocusExtension.cs" />
     <Compile Include="AttachedProperties\ILoadedAction.cs" />
     <Compile Include="AttachedProperties\LoadedBinding.cs" />
+    <Compile Include="Fonts\FontAwesomeIcons.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="ViewModels\AddInstructionContentViewModel.cs" />
     <Compile Include="ViewModels\AddInstructionGroupViewModel.cs" />
@@ -124,6 +125,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\Font Awesome 6 Brands-Regular-400.otf" />
+    <Resource Include="Fonts\Font Awesome 6 Free-Regular-400.otf" />
+    <Resource Include="Fonts\Font Awesome 6 Free-Solid-900.otf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace InstructionSearch
 {
-    class AddInstructionContentViewModel : ViewModelBase
+    class AddInstructionContentViewModel : ViewModelBase, IDialogResult
     {
         Window _window;
 
@@ -12,12 +12,15 @@ namespace InstructionSearch
 
         public string Content { get; set; }
 
+        public string Result { get; set; }
+
         public ICommand SaveCommand => new RelayCommand((i) =>
         {
             try
             {
                 File.WriteAllText(Path.Combine(InstructionUtility.GetCurrentPath(), $"{Title}.txt"), Content);
                 _window.DialogResult = true;
+                Result = $"{Title}.txt";
             }
             catch
             {
@@ -34,5 +37,6 @@ namespace InstructionSearch
         {
             _window = o as Window;
         });
+
     }
 }

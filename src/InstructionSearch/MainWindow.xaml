@@ -12,32 +12,63 @@
         <local:MainViewModel/>
     </Window.DataContext>
 
+    <Window.Resources>
+        <FontFamily x:Key="FontAwesomeSolid">/InstructionSearch;component/Fonts/Font Awesome 6 Free-Solid-900.otf#Font Awesome 6 Free Solid</FontFamily>
+        <FontFamily x:Key="FontAwesomeRegular">/InstructionSearch;component/Fonts/Font Awesome 6 Free-Regular-400.otf#Font Awesome 6 Free Regular</FontFamily>
+    </Window.Resources>
+
     <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Backward"
+                    Command="{Binding BackwardCommand}"/>
+            <Button Content="Forward"
+                    Command="{Binding ForwardCommand}"/>
+            <Button Content="Home"
+                    Command="{Binding HomeCommand}"/>
+        </StackPanel>
         <ItemsControl ItemsSource="{Binding Groups}"
                       ScrollViewer.VerticalScrollBarVisibility="Auto"
                       Height="300">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel/>
+                    <StackPanel Orientation="Vertical"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button Content="{Binding Name}"
                             Command="{Binding DataContext.ItemClickCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}, Mode=FindAncestor}}"
-                            CommandParameter="{Binding}">
+                            CommandParameter="{Binding}"
+                            ToolTip="{Binding Name}" 
+                            Height="40">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border x:Name="border" Padding="5" BorderThickness="1"
                                         BorderBrush="Black"
                                         CornerRadius="5"
-                                        Background="Transparent">
-                                    <ContentPresenter Content="{TemplateBinding Content}"
-                                                      HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        Background="Transparent"
+                                        Width="{TemplateBinding Width}"
+                                        Height="{TemplateBinding Height}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock x:Name="icon" Text="Icon" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                   TextWrapping="WrapWithOverflow"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   FontSize="20"
+                                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                   Margin="5"/>
+                                        <ContentPresenter Content="{TemplateBinding Content}" 
+                                                          HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </StackPanel>
                                 </Border>
                                 <ControlTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static local:ItemType.Directory}">
+                                        <Setter TargetName="icon" Property="Text" Value="{x:Static local:FontAwesomeIcons.Folder}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static local:ItemType.File}">
+                                        <Setter TargetName="icon" Property="Text" Value="{x:Static local:FontAwesomeIcons.File}"/>
+                                    </DataTrigger>
                                     <Trigger Property="ButtonBase.IsMouseOver" Value="True">
-                                        <Setter TargetName="border" Property="Background" Value="#330000FF"/>
+                                        <Setter TargetName="border" Property="Background" Value="#110000CC"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>

@@ -22,6 +22,9 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Padding" Value="5"/>
         </Style>
+
+
+
     </Window.Resources>
 
     <StackPanel Orientation="Vertical">
@@ -32,6 +35,7 @@
 
         <TextBox AcceptsReturn="True" 
                  IsReadOnly="True"
+                 Text="{Binding Content}"
                  VerticalScrollBarVisibility="Visible"
                  Height="380"/>
     </StackPanel>
