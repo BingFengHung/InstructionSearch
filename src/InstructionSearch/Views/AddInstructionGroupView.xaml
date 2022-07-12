@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InstructionSearch"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         SizeToContent="WidthAndHeight"
-        Title="AddInstructionGroupView">
+        Title="AddInstructionGroupView"
+        local:LoadedBindings.LoadedEnabled="True"
+        local:LoadedBindings.LoadedAction="{Binding LoadedAction}"
+        Width="200" Height="100">
     <Window.DataContext>
         <local:AddInstructionGroupViewModel/>
     </Window.DataContext>
@@ -15,9 +19,11 @@
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                 Margin="5">
         <StackPanel Orientation="Horizontal">
-            <TextBlock  Text="指令集名稱：" Margin="5, 0"/>
+            <TextBlock Text="指令集名稱：" Margin="5, 0"/>
             <TextBox Width="100"
-                     Text="{Binding GroupName, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+                     Text="{Binding GroupName, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                     local:FocusExtension.IsFocused="True"/>
+
         </StackPanel>
 
         <StackPanel Orientation="Horizontal"
@@ -25,6 +31,7 @@
                     Margin="0, 5">
             <Button Content="確定"
                     Command="{Binding ConfirmCommand}"/>
+
             <Button Content="取消"
                     Command="{Binding CancelCommand}"/>
         </StackPanel>

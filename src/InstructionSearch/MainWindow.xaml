@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InstructionSearch"
         mc:Ignorable="d"
-        SizeToContent="WidthAndHeight"
+        SizeToContent="Height"
         Width="450"
         Title="MainWindow">
     <Window.DataContext>
@@ -23,7 +23,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button>
+                    <Button Content="{Binding Name}">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border>

@@ -59,7 +59,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AttachedProperties\FocusExtension.cs" />
+    <Compile Include="AttachedProperties\ILoadedAction.cs" />
+    <Compile Include="AttachedProperties\LoadedBinding.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="ViewModels\AddInstructionGroupViewModel.cs" />
+    <Compile Include="AttachedProperties\DelegateLoadedAction.cs" />
     <Compile Include="Views\AddInstructionGroupView.xaml.cs">
       <DependentUpon>AddInstructionGroupView.xaml</DependentUpon>
     </Compile>

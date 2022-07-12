@@ -3,11 +3,6 @@ using System.Windows.Input;
 
 namespace InstructionSearch
 {
-    class Group
-    {
-        public string Name { get; set; }
-    }
-
     class MainViewModel : ViewModelBase
     {
         public MainViewModel()
@@ -28,7 +23,7 @@ namespace InstructionSearch
         public ICommand AddGroupCommand => new RelayCommand((i) =>
         {
             AddInstructionGroupView addGroupView = new AddInstructionGroupView();
-            if (addGroupView.DialogResult == true)
+            if (addGroupView.ShowDialog() == true)
             {
                 Groups.Add(new Group
                 {
