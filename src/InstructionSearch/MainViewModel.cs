@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Linq;
+using System.IO;
 
 namespace InstructionSearch
 {
@@ -43,12 +44,46 @@ namespace InstructionSearch
         {
             if (InstructionUtility.GetCurrentPath() == InstructionUtility.BasePath) return;
 
+            AddInstructionContentView addContentView = new AddInstructionContentView();
 
+            if (addContentView.ShowDialog() == true)
+            {
+                var result = ((IDialogResult)addContentView).Result;
+
+                Groups.Add(new Group
+                {
+                    Name = result,
+                    FullPath = Path.Combine(InstructionUtility.GetCurrentPath(), result)
+                });
+            }
         });
 
         public ICommand ItemClickCommand => new RelayCommand(i =>
         {
             var model = i as Group;
+
+            if (model.Type == ItemType.Directory)
+            {
+                var groups = InstructionUtility.Groups(model.FullPath);
+                foreach (var group in groups)
+                {
+                    var groupName = InstructionUtility.GetGroupName(group);
+                    var type = InstructionUtility.GetItemType(group);
+                    Groups.Add(new Group
+                    {
+                        Name = groupName,
+                        FullPath = group,
+                        Type = type
+                    });
+                }
+            }
+            else
+            {
+                InstructionContentView instructionContentView = new InstructionContentView();
+                instructionContentView.Item = model;
+                instructionContentView.ShowDialog();
+
+            }
         });
     }
 }

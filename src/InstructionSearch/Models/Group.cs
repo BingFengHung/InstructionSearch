@@ -1,11 +1,11 @@
 ﻿namespace InstructionSearch
 {
-    enum ItemType
+    public enum ItemType
     {
         Directory,
         File
     }
-    class Group
+    public class Group
     {
         public string Name { get; set; }
 

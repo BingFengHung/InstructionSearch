@@ -66,6 +66,7 @@
     <Compile Include="ViewModels\AddInstructionContentViewModel.cs" />
     <Compile Include="ViewModels\AddInstructionGroupViewModel.cs" />
     <Compile Include="AttachedProperties\DelegateLoadedAction.cs" />
+    <Compile Include="ViewModels\InstructionContentViewModel.cs" />
     <Compile Include="Views\AddInstructionContentView.xaml.cs">
       <DependentUpon>AddInstructionContentView.xaml</DependentUpon>
     </Compile>
@@ -73,6 +74,9 @@
       <DependentUpon>AddInstructionGroupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\IDialogResult.cs" />
+    <Compile Include="Views\InstructionContentView.xaml.cs">
+      <DependentUpon>InstructionContentView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddInstructionGroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InstructionContentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace InstructionSearch.Views
+namespace InstructionSearch
 {
     /// <summary>
     /// Interaction logic for AddInstructionContentView.xaml
