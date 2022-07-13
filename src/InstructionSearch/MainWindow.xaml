@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InstructionSearch"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         SizeToContent="Height"
         Width="450"
@@ -18,14 +19,31 @@
     </Window.Resources>
 
     <StackPanel Orientation="Vertical">
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Backward"
-                    Command="{Binding BackwardCommand}"/>
-            <Button Content="Forward"
-                    Command="{Binding ForwardCommand}"/>
-            <Button Content="Home"
-                    Command="{Binding HomeCommand}"/>
-        </StackPanel>
+        <Grid Margin="0, 0, 0, 5">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="Width" Value="40"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Content="{x:Static local:FontAwesomeIcons.AngleLeft}" Command="{Binding BackwardCommand}"
+                        FontFamily="{StaticResource FontAwesomeSolid}"/>
+
+                <Button Content="{x:Static local:FontAwesomeIcons.AngleRight}" Command="{Binding ForwardCommand}"
+                        FontFamily="{StaticResource FontAwesomeSolid}"/>
+
+                <Button Content="{x:Static local:FontAwesomeIcons.House}" Command="{Binding HomeCommand}"
+                        FontFamily="{StaticResource FontAwesomeSolid}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button Content="新增群組" Command="{Binding AddGroupCommand}"/>
+                <Button Content="新增指令" Command="{Binding AddInstructionCommand}"/>
+            </StackPanel>
+        </Grid>
+
         <ItemsControl ItemsSource="{Binding Groups}"
                       ScrollViewer.VerticalScrollBarVisibility="Auto"
                       Height="300">
@@ -43,7 +61,7 @@
                             Height="40">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border x:Name="border" Padding="5" BorderThickness="1"
+                                <Border x:Name="border" Padding="5" BorderThickness=".1"
                                         BorderBrush="Black"
                                         CornerRadius="5"
                                         Background="Transparent"
@@ -78,10 +96,5 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="新增群組" Command="{Binding AddGroupCommand}"/>
-            <Button Content="新增指令" Command="{Binding AddInstructionCommand}"/>
-        </StackPanel>
     </StackPanel>
 </Window>

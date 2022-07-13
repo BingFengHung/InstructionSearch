@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InstructionSearch"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
         Title="InstructionContentView" Height="500" Width="400">
     <Window.DataContext>
         <local:InstructionContentViewModel/>
